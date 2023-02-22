@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apatest
+  labels:
+    app: webserver
+spec:
+  containers:
+  - name: apacont
+    image: atcomp/apachetest
+    ports:
+    - containerPort: 80
+  restartPolicy: Never

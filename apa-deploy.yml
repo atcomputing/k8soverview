@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apadep
+  labels:
+    app: webserver
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apapod
+  template:
+    metadata:
+      labels:
+        app: apapod
+    spec:
+      containers:
+      - name: apacont
+        image: atcomp/apachetest:1.14
+        ports:
+        - containerPort: 80

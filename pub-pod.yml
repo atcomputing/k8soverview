@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pub-pod
+spec:
+  containers:
+  - name: lspub
+    image: ubuntu
+    command: ["ls", "-l", "/public"]
+    volumeMounts:
+    - name: pubstore
+      mountPath: /public
+  restartPolicy: Never
+
+  volumes:
+  - name: pubstore
+    persistentVolumeClaim:
+      claimName: pub-pvc
